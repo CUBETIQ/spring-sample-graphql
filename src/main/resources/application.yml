@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://${POSTGRES_HOST:192.168.0.202}:5432/${POSTGRES_DB:sample_graphql}
+    username: ${POSTGRES_USERNAME:cubetiq}
+    password: ${POSTGRES_PASSWORD:Root$}
+    hikari:
+      max-lifetime: 1800000
+      connection-timeout: 30000
+      idle-timeout: 600000
+      maximum-pool-size: 30
+      allow-pool-suspension: true
+    tomcat:
+      max_active: 10
+      max_idle: 5
+      min-idle: 2
+      initial_size: 5
+      remove_abandoned: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+    open-in-view: true
